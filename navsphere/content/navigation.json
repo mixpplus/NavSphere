@@ -896,6 +896,14 @@
               "description": "一个HTTP请求定时任务自动执行框架 base on HAR Editor and Tornado Server",
               "icon": "/assets/favicon_1754288505384.png",
               "enabled": true
+            },
+            {
+              "id": "site_1754288663760_2tv4ogqak",
+              "title": "shs库上传工具",
+              "href": "https://oss.bash.pp.ua/",
+              "description": "",
+              "icon": "/assets/favicon_1754288627953.ico",
+              "enabled": true
             }
           ]
         },
