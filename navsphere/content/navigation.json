@@ -937,6 +937,14 @@
               "description": "芋道源码",
               "icon": "/assets/favicon_1754289113457.ico",
               "enabled": true
+            },
+            {
+              "id": "1754289161596",
+              "title": "技术教程导航中心",
+              "href": "https://tech.pp.ua/",
+              "description": "技术教程导航中心",
+              "icon": "/assets/favicon_1754289164742.ico",
+              "enabled": true
             }
           ]
         }
