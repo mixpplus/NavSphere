@@ -987,6 +987,14 @@
               "enabled": true
             }
           ]
+        },
+        {
+          "id": "9219fbfe-9be5-4567-94ca-45a041ff1daa",
+          "title": "娱乐类",
+          "icon": "Music",
+          "description": "娱乐网站",
+          "enabled": true,
+          "items": []
         }
       ]
     }
