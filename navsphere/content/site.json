@@ -5,8 +5,8 @@
     "keywords": "设计导航,设计资源,设计工具,设计素材,设计教程"
   },
   "appearance": {
-    "logo": "/assets/images/alogo.png",
-    "favicon": "/assets/images/favicon.png",
+    "logo": "https://r2love.ingtool.eu.org/static/image/favicon.ico",
+    "favicon": "https://r2love.ingtool.eu.org/static/image/favicon.ico",
     "theme": "system"
   }
 }
