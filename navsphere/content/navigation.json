@@ -872,6 +872,14 @@
               "description": "FOREVER LOVE",
               "icon": "/assets/favicon_1754288412297.ico",
               "enabled": true
+            },
+            {
+              "id": "site_1754288452961_vole8nsr4",
+              "title": "云记事本",
+              "href": "https://notes.ingin.pp.ua/",
+              "description": "",
+              "icon": "/assets/favicon_1754288446034.ico",
+              "enabled": true
             }
           ]
         },
