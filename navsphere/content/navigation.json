@@ -963,14 +963,6 @@
               "enabled": true
             },
             {
-              "id": "1754289234939",
-              "title": "FutureEcho",
-              "href": "https://music.mefun.org/app/#/song",
-              "description": "Navidrome Music",
-              "icon": "/assets/favicon_1754289239377.png",
-              "enabled": true
-            },
-            {
               "id": "1754289292598",
               "title": "Trueのikun",
               "href": "https://diaojinping.de/app/#/song",
@@ -994,7 +986,16 @@
           "icon": "Music",
           "description": "娱乐网站",
           "enabled": true,
-          "items": []
+          "items": [
+            {
+              "id": "1754289234939",
+              "title": "FutureEcho",
+              "href": "https://music.mefun.org/app/#/song",
+              "description": "Navidrome Music",
+              "icon": "/assets/favicon_1754289239377.png",
+              "enabled": true
+            }
+          ]
         }
       ]
     }
