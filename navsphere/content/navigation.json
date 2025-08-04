@@ -880,6 +880,14 @@
               "description": "",
               "icon": "/assets/favicon_1754288446034.ico",
               "enabled": true
+            },
+            {
+              "id": "site_1754288488286_szexdquy4",
+              "title": "short link",
+              "href": "https://short.ingin.pp.ua/",
+              "description": "短链接",
+              "icon": "/assets/favicon_1754288471101.png",
+              "enabled": true
             }
           ]
         },
