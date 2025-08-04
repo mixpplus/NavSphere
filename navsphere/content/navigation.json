@@ -166,7 +166,7 @@
               "title": "QD ",
               "href": "https://qd.ingtool.eu.org/",
               "description": "一个HTTP请求定时任务自动执行框架 base on HAR Editor and Tornado Server",
-              "icon": "/assets/favicon_1754288505384.png",
+              "icon": "https://r2love.ingtool.eu.org/static/image/favicon.ico",
               "enabled": true
             },
             {
