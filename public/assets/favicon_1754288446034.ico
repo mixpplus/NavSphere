@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>云记事本</title>
+  <style>
+    :root {
+      --accent-color: #4361ee;
+      --sidebar-bg: #2d3748;
+      --content-bg: #f8fafc;
+      --item-hover: #4a5568;
+      --danger-color: #e53e3e;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      background-color: var(--content-bg);
+      color: #333;
+    }
+    
+    .app-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+    
+    /* 左侧30%宽度 - 笔记本列表 */
+    .notebooks-panel {
+      width: 30%;
+      max-width: 450px; /* 设置最大宽度避免在宽屏上过宽 */
+      min-width: 300px; /* 设置最小宽度保证可读性 */
+      display: flex;
+      flex-direction: column;
+      background: var(--sidebar-bg);
+      color: white;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    }
+    
+    .panel-header {
+      padding: 20px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #4a5568;
+    }
+    
+    .brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #e2e8f0;
+    }
+    
+    .new-note-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    
+    .new-note-btn:hover {
+      background: #3a56d4;
+      transform: translateY(-1px);
+    }
+    
+    .notes-list-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px 25px;
+    }
+    
+    /* 笔记本项样式 */
+    .note-item {
+      padding: 15px 20px;
+      margin: 10px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .note-item:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .note-item.active {
+      background: var(--accent-color);
+    }
+    
+    .note-info {
+      flex: 1;
+      overflow: hidden;
+    }
+    
+    .note-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-bottom: 5px;
+    }
+    
+    .note-time {
+      font-size: 0.8rem;
+      color: #a0aec0;
+    }
+    
+    .note-actions {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .action-btn {
+      background: none;
+      border: none;
+      color: #a0aec0;
+      cursor: pointer;
+      padding: 5px;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .action-btn:hover {
+      color: white;
+    }
+    
+    /* 右侧70%宽度 - 内容编辑区 */
+    .editor-panel {
+      flex: 1; /* 占满剩余空间 */
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .editor-header {
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      min-height: 80px;
+    }
+    
+    .current-note-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 0;
+      padding-right: 20px;
+      max-width: 80%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .editor-actions {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .primary-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .primary-btn:hover {
+      background: #3a56d4;
+    }
+    
+    /* 内容编辑区域 - 最大化 */
+    .editor-container {
+      flex: 1;
+      display: flex;
+      position: relative;
+      background: white;
+    }
+    
+    .editor-content {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    
+    .note-editor {
+      flex: 1;
+      padding: 30px;
+      border: none;
+      background: white;
+      resize: none;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      min-height: 300px;
+    }
+    
+    .note-editor:focus {
+      outline: none;
+    }
+    
+    .empty-state {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #718096;
+      text-align: center;
+      background: var(--content-bg);
+      padding: 30px;
+    }
+    
+    .empty-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      opacity: 0.6;
+    }
+    
+    .empty-message {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .empty-title {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+    
+    .empty-text {
+      font-size: 1.1rem;
+      color: #a0aec0;
+      margin-bottom: 25px;
+    }
+    
+    .get-started-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    
+    .get-started-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+    }
+    
+    .editor-footer {
+      padding: 15px 30px;
+      background: white;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #718096;
+      font-size: 0.9rem;
+    }
+    
+    .status-info {
+      display: flex;
+      gap: 30px;
+    }
+    
+    .last-saved {
+      font-style: italic;
+    }
+    
+    .character-count {
+      font-weight: 500;
+    }
+    
+    /* 模态框样式 */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 500px;
+      padding: 30px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+    }
+    
+    .modal-title {
+      margin-bottom: 25px;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    
+    .input-group {
+      margin-bottom: 25px;
+    }
+    
+    .text-input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    
+    .text-input:focus {
+      border-color: var(--accent-color);
+      outline: none;
+    }
+    
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+    }
+    
+    .cancel-btn {
+      background: none;
+      color: #4a5568;
+      border: 1px solid #e2e8f0;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    
+    .confirm-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    
+    /* 登录页面 */
+    .login-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      z-index: 1000;
+    }
+    
+    .login-card {
+      width: 100%;
+      max-width: 450px;
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    
+    .login-title {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #2d3748;
+    }
+    
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+    
+    .form-control {
+      padding: 15px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    
+    .form-control:focus {
+      border-color: var(--accent-color);
+      outline: none;
+    }
+    
+    .login-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .login-btn:hover {
+      background: #3a56d4;
+      transform: translateY(-2px);
+    }
+    
+    .login-footer {
+      margin-top: 25px;
+      color: #718096;
+      font-size: 0.9rem;
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 1000px) {
+      .app-container {
+        flex-direction: column;
+      }
+      
+      .notebooks-panel {
+        width: 100%;
+        max-width: none;
+        min-height: 200px;
+        max-height: 50vh;
+      }
+      
+      .editor-panel {
+        width: 100%;
+        min-height: 50vh;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .panel-header,
+      .editor-header {
+        padding: 15px;
+      }
+      
+      .current-note-title {
+        font-size: 1.4rem;
+      }
+      
+      .note-item {
+        padding: 12px 15px;
+      }
+      
+      .note-editor {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- 左侧：笔记本列表 (30%) -->
+    <div class="notebooks-panel">
+      <div class="panel-header">
+        <div class="brand">我的记事本</div>
+        <button id="new-note-btn" class="new-note-btn">+ 新建</button>
+      </div>
+      <div class="notes-list-container">
+        <div id="notes-list">
+          <!-- 笔记本列表将通过JS动态填充 -->
+        </div>
+      </div>
+    </div>
+    
+    <!-- 右侧：内容编辑区 (70%) -->
+    <div class="editor-panel">
+      <div class="editor-header">
+        <h1 id="current-note-title" class="current-note-title">未选择记事本</h1>
+        <div class="editor-actions">
+          <button id="save-note-btn" class="primary-btn">
+            <span>保存</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="editor-container">
+        <div class="editor-content">
+          <textarea id="note-editor" class="note-editor" placeholder="开始编辑内容..." style="display: none;"></textarea>
+        </div>
+        
+        <div id="empty-state" class="empty-state">
+          <div class="empty-message">
+            <div class="empty-icon">📚</div>
+            <h2 class="empty-title">未选择记事本</h2>
+            <p class="empty-text">请从左侧选择或新建一个记事本开始创作</p>
+            <button id="get-started-btn" class="get-started-btn">创建第一个记事本</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="editor-footer">
+        <div class="status-info">
+          <div id="last-saved" class="last-saved">未保存</div>
+          <div id="character-count" class="character-count">0 字符</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 标题编辑模态框 -->
+  <div id="title-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2 id="modal-title" class="modal-title">新建记事本</h2>
+      <div class="input-group">
+        <input type="text" id="note-title-input" class="text-input" placeholder="输入记事本标题">
+      </div>
+      <div class="modal-actions">
+        <button id="cancel-title-btn" class="cancel-btn">取消</button>
+        <button id="confirm-title-btn" class="confirm-btn">确认</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 登录页面 -->
+  <div id="login-page" class="login-screen" style="display: flex;">
+    <div class="login-card">
+      <h1 class="login-title">登录到记事本</h1>
+      <div class="login-form">
+        <input type="text" id="username" class="form-control" placeholder="用户名">
+        <input type="password" id="password" class="form-control" placeholder="密码">
+        <button id="login-btn" class="login-btn">登录</button>
+      </div>
+      <p class="login-footer">安全记事本 · 所有内容加密存储</p>
+    </div>
+  </div>
+  
+  <script>
+    // 辅助函数：防止XSS攻击
+    function escapeHtml(unsafe) {
+      return unsafe.toString()
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    class NotepadApp {
+      constructor() {
+        this.notes = [];
+    this.currentNoteId = null;
+    this.isAuthenticated = false;
+    this.lastSaved = null;
+
+    // DOM元素
+    this.notesList = document.getElementById('notes-list');
+    this.noteEditor = document.getElementById('note-editor');
+    this.emptyState = document.getElementById('empty-state');
+    this.currentNoteTitle = document.getElementById('current-note-title');
+    this.titleInput = document.getElementById('note-title-input');
+    this.modal = document.getElementById('title-modal');
+    this.modalTitle = document.getElementById('modal-title');
+    this.loginPage = document.getElementById('login-page');
+    this.lastSavedElement = document.getElementById('last-saved');
+    this.characterCountElement = document.getElementById('character-count');
+    this.appContainer = document.querySelector('.app-container'); // ✅ 添加此行
+
+    // 按钮
+    this.newNoteBtn = document.getElementById('new-note-btn');
+    this.saveNoteBtn = document.getElementById('save-note-btn');
+    this.getStartedBtn = document.getElementById('get-started-btn');
+    this.confirmTitleBtn = document.getElementById('confirm-title-btn');
+    this.cancelTitleBtn = document.getElementById('cancel-title-btn');
+    this.loginBtn = document.getElementById('login-btn');
+
+    // 绑定事件
+    this.bindEvents();
+
+    // 初始化
+    this.checkAuth();
+      }
+      
+      bindEvents() {
+        this.newNoteBtn.addEventListener('click', () => this.showTitleModal('new'));
+        this.saveNoteBtn.addEventListener('click', () => this.saveCurrentNote());
+        this.getStartedBtn.addEventListener('click', () => this.showTitleModal('new'));
+        
+        this.confirmTitleBtn.addEventListener('click', () => this.handleTitleConfirm());
+        this.cancelTitleBtn.addEventListener('click', () => this.hideModal());
+        
+        this.noteEditor.addEventListener('input', () => {
+          this.updateCharacterCount();
+          this.debouncedSave();
+        });
+        
+        this.loginBtn.addEventListener('click', () => this.attemptLogin());
+        
+        // 输入框的Enter键提交
+        this.titleInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') this.handleTitleConfirm();
+        });
+        
+        document.getElementById('password').addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') this.attemptLogin();
+        });
+      }
+      
+      updateCharacterCount() {
+        const count = this.noteEditor.value.length;
+        this.characterCountElement.textContent = count + ' 字符';
+      }
+      
+      updateLastSaved() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString();
+        this.lastSaved = now;
+        this.lastSavedElement.textContent = '最后保存: ' + timeString;
+      }
+      
+      debouncedSave() {
+        clearTimeout(this.debounceTimer);
+        this.debounceTimer = setTimeout(() => {
+          if (this.currentNoteId) {
+            this.saveNote(this.currentNoteId, this.noteEditor.value)
+              .then(() => this.updateLastSaved());
+          }
+        }, 1000);
+      }
+      
+      async apiFetch(url, options = {}) {
+        const token = localStorage.getItem('npToken');
+        
+        if (!options.headers) {
+          options.headers = {};
+        }
+        
+        if (token) {
+          options.headers['Authorization'] = 'Bearer ' + token;
+        }
+        
+        try {
+          const response = await fetch(url, options);
+          
+          if (!response.ok) {
+            if (response.status === 401) {
+              // 令牌失效处理
+              this.isAuthenticated = false;
+              this.loginPage.style.display = 'flex';
+              this.appContainer.style.display = 'none';
+              localStorage.removeItem('npToken');
+              alert('登录已过期，请重新登录');
+            }
+            const errorText = await response.text();
+            throw new Error('请求失败: ' + response.status + ' - ' + errorText);
+          }
+          
+          return response;
+        } catch (error) {
+          console.error('API请求错误:', error);
+          throw error;
+        }
+      }
+      
+      async checkAuth() {
+        // 尝试获取现有的认证令牌
+        const token = localStorage.getItem('npToken');
+        
+        if (token) {
+          try {
+            // 使用this.apiFetch代替fetch
+            const resp = await this.apiFetch('/auth/verify');
+            
+            if (resp.ok) {
+              this.isAuthenticated = true;
+              this.loginPage.style.display = 'none';
+              this.appContainer.style.display = 'flex';
+              this.loadNotes();
+              return;
+            }
+          } catch (error) {
+            console.error('令牌验证失败:', error);
+            // 验证失败时清除无效令牌
+            localStorage.removeItem('npToken');
+          }
+        }
+        
+        // 未登录或验证失败
+        this.isAuthenticated = false;
+        this.appContainer.style.display = 'none';
+        this.loginPage.style.display = 'flex';
+      }
+      
+      async attemptLogin() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        try {
+          // 使用this.apiFetch代替fetch
+          const resp = await fetch('/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+          });
+          
+          if (resp.ok) {
+            const data = await resp.json();
+            localStorage.setItem('npToken', data.token);
+            this.isAuthenticated = true;
+            this.loginPage.style.display = 'none';
+            this.appContainer.style.display = 'flex';
+            this.loadNotes();
+          } else {
+            const errorData = await resp.json();
+            if (errorData.error === 'Server configuration error') {
+              alert('服务器配置错误：请确保环境变量已正确设置');
+            } else {
+              alert('登录失败: ' + (errorData.error || '请检查用户名和密码'));
+            }
+          }
+        } catch (error) {
+          console.error('登录请求失败:', error);
+          alert('登录请求失败: ' + error.message);
+        }
+      }
+      
+      async loadNotes() {
+        try {
+          const resp = await this.apiFetch('/api/notes');
+          if (!resp.ok) return;
+          
+          this.notes = await resp.json();
+          this.renderNotesList();
+        } catch (e) {
+          console.error('加载笔记失败:', e);
+        }
+      }
+      
+      renderNotesList() {
+        this.notesList.innerHTML = '';
+        
+        if (this.notes.length === 0) {
+          const emptyElement = document.createElement('div');
+          emptyElement.style = 'padding: 40px 20px; text-align: center; color: #a0aec0;';
+          emptyElement.textContent = '您还没有记事本';
+          this.notesList.appendChild(emptyElement);
+          return;
+        }
+        
+        this.notes.forEach(note => {
+          const noteElement = document.createElement('div');
+          noteElement.className = 'note-item';
+          
+          if (note.id === this.currentNoteId) {
+            noteElement.classList.add('active');
+          }
+          
+          // 创建笔记信息区域
+          const noteInfo = document.createElement('div');
+          noteInfo.className = 'note-info';
+          
+          const titleDiv = document.createElement('div');
+          titleDiv.className = 'note-title';
+          titleDiv.textContent = escapeHtml(note.title);
+          noteInfo.appendChild(titleDiv);
+          
+          const timeDiv = document.createElement('div');
+          timeDiv.className = 'note-time';
+          timeDiv.textContent = this.formatDate(note.updatedAt || note.createdAt);
+          noteInfo.appendChild(timeDiv);
+          
+          // 创建操作按钮区域
+          const noteActions = document.createElement('div');
+          noteActions.className = 'note-actions';
+          
+          const editBtn = document.createElement('button');
+          editBtn.className = 'action-btn edit-btn';
+          editBtn.title = '重命名';
+          editBtn.innerHTML = '&#9998;'; // ✏️
+          editBtn.dataset.id = note.id;
+          
+          const deleteBtn = document.createElement('button');
+          deleteBtn.className = 'action-btn delete-btn';
+          deleteBtn.title = '删除';
+          deleteBtn.innerHTML = '&#128465;'; // 🗑️
+          deleteBtn.dataset.id = note.id;
+          
+          noteActions.appendChild(editBtn);
+          noteActions.appendChild(deleteBtn);
+          
+          // 组装元素
+          noteElement.appendChild(noteInfo);
+          noteElement.appendChild(noteActions);
+          this.notesList.appendChild(noteElement);
+          
+          // 添加点击事件
+          noteElement.addEventListener('click', () => this.selectNote(note.id));
+          editBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.showTitleModal('edit', note.id, note.title);
+          });
+          deleteBtn.addEventListener('click', this.createDeleteHandler(note.id));
+        });
+      }
+      
+      createDeleteHandler(noteId) {
+        return async (e) => {
+          e.stopPropagation();
+          if (confirm('确定要删除这个记事本吗？此操作不可恢复。')) {
+            try {
+              await this.apiFetch('/api/notes/' + encodeURIComponent(noteId), {
+                method: 'DELETE'
+              });
+      
+              if (this.currentNoteId === noteId) {
+                this.resetEditorState();
+              }
+      
+              this.notes = this.notes.filter(n => n.id !== noteId);
+              this.renderNotesList();
+              alert('记事本已成功删除');
+            } catch (error) {
+              alert('删除失败，请重试');
+            }
+          }
+        };
+      }
+      
+      resetEditorState() {
+        this.currentNoteId = null;
+        this.currentNoteTitle.textContent = '未选择记事本';
+        this.noteEditor.value = '';
+        this.emptyState.style.display = 'flex';
+        this.noteEditor.style.display = 'none';
+      }
+      
+      formatDate(dateString) {
+        if (!dateString) return '';
+        
+        const date = new Date(dateString);
+        return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      }
+      
+      async selectNote(id) {
+        try {
+          this.currentNoteId = id;
+          const note = this.notes.find(n => n.id === id);
+          if (!note) return;
+          
+          const resp = await this.apiFetch('/api/notes/' + encodeURIComponent(id));
+          if (!resp.ok) return;
+          
+          const noteData = await resp.json();
+          
+          this.currentNoteTitle.textContent = note.title;
+          this.emptyState.style.display = 'none';
+          this.noteEditor.style.display = 'block';
+          this.noteEditor.value = noteData.content || '';
+          this.noteEditor.focus();
+          this.updateCharacterCount();
+          
+          // 更新活动项高亮
+          document.querySelectorAll('.note-item').forEach(item => {
+            item.classList.remove('active');
+          });
+          
+          const currentItem = [...document.querySelectorAll('.note-item')]
+            .find(item => item.querySelector('.note-title').textContent === note.title);
+            
+          if (currentItem) {
+            currentItem.classList.add('active');
+          }
+        } catch (e) {
+          console.error('选择笔记失败:', e);
+          alert('加载笔记失败，请重试');
+        }
+      }
+      
+      showTitleModal(mode, id, currentTitle = '') {
+        this.modal.style.display = 'flex';
+        this.modalTitle.textContent = mode === 'new' ? '新建记事本' : '重命名记事本';
+        this.titleInput.value = currentTitle;
+        this.titleInput.focus();
+        
+        // 存储模式信息
+        this.modal.dataset.mode = mode;
+        if (id) this.modal.dataset.id = id;
+      }
+      
+      hideModal() {
+        this.modal.style.display = 'none';
+        this.titleInput.value = '';
+        delete this.modal.dataset.mode;
+        delete this.modal.dataset.id;
+      }
+      
+      async handleTitleConfirm() {
+        const title = this.titleInput.value.trim();
+        if (!title) {
+          alert('请输入记事本标题');
+          return;
+        }
+        
+        const mode = this.modal.dataset.mode;
+        const id = this.modal.dataset.id;
+        
+        if (mode === 'new') {
+          await this.createNote(title);
+        } else if (mode === 'edit') {
+          await this.renameNote(id, title);
+        }
+        
+        this.hideModal();
+      }
+      
+      async createNote(title) {
+        try {
+          const resp = await this.apiFetch('/api/notes', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title })
+          });
+          
+          if (resp.ok) {
+            const newNote = await resp.json();
+            this.notes.push(newNote);
+            this.renderNotesList();
+            this.selectNote(newNote.id);
+          }
+        } catch (e) {
+          console.error('创建笔记失败:', e);
+          alert('创建记事本失败，请重试');
+        }
+      }
+      
+      async renameNote(id, newTitle) {
+        try {
+          const resp = await this.apiFetch('/api/notes/' + encodeURIComponent(id) + '/title', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: newTitle })
+          });
+          
+          if (resp.ok) {
+            const note = this.notes.find(n => n.id === id);
+            if (note) note.title = newTitle;
+            this.renderNotesList();
+            
+            if (this.currentNoteId === id) {
+              this.currentNoteTitle.textContent = newTitle;
+            }
+          }
+        } catch (e) {
+          console.error('重命名失败:', e);
+          alert('重命名失败，请重试');
+        }
+      }
+      
+      async saveCurrentNote() {
+        if (!this.currentNoteId) {
+          alert('请先选择一个记事本');
+          return;
+        }
+        
+        try {
+          const content = this.noteEditor.value;
+          await this.saveNote(this.currentNoteId, content);
+          this.updateLastSaved();
+          alert('保存成功！');
+        } catch (e) {
+          console.error('保存失败:', e);
+          alert('保存失败，请重试');
+        }
+      }
+      
+      async saveNote(id, content) {
+        await this.apiFetch('/api/notes/' + encodeURIComponent(id), {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content })
+        });
+      }
+    }
+    
+    // 初始化应用
+    document.addEventListener('DOMContentLoaded', () => {
+      window.app = new NotepadApp();
+    });
+  </script>
+</body>
+</html>
