@@ -864,6 +864,14 @@
               "description": "Komari Monitor, a simple server monitoring tool.",
               "icon": "/assets/favicon_1754288371688.ico",
               "enabled": true
+            },
+            {
+              "id": "site_1754288428904_uew7as3zz",
+              "title": "FOREVER LOVE",
+              "href": "https://foreverloves.eu.org/",
+              "description": "FOREVER LOVE",
+              "icon": "/assets/favicon_1754288412297.ico",
+              "enabled": true
             }
           ]
         },
