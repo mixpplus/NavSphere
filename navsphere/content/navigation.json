@@ -99,6 +99,179 @@
       "enabled": true
     },
     {
+      "id": "1754287656539",
+      "title": "自建工具",
+      "icon": "Folder",
+      "description": "一些自己创建的工具和教程",
+      "enabled": true,
+      "items": [],
+      "subCategories": [
+        {
+          "id": "abd56887-97f1-4a4a-86b5-d8415f22edf0",
+          "title": "工具类",
+          "icon": "Network",
+          "description": "一些自建工具",
+          "enabled": true,
+          "items": [
+            {
+              "id": "1754287668523",
+              "title": "二维码生成器",
+              "href": "https://qrcode.ingtool.eu.org/",
+              "description": "二维码生成器",
+              "icon": "/assets/img_1754287778213.png",
+              "enabled": true
+            },
+            {
+              "id": "site_1754288335391_ojomlb1u2",
+              "title": "tgState",
+              "href": "https://pic.ingtool.eu.org/",
+              "description": "telegram图床,tg图床,免费图床,永久图床,图片外链,免费图片外链,纸飞机图床,电报图床",
+              "icon": "/assets/favicon_1754288320000.ico",
+              "enabled": true
+            },
+            {
+              "id": "site_1754288392681_808u94me3",
+              "title": "探针",
+              "href": "https://tz.ingin.pp.ua/",
+              "description": "Komari Monitor, a simple server monitoring tool.",
+              "icon": "/assets/favicon_1754288371688.ico",
+              "enabled": true
+            },
+            {
+              "id": "site_1754288428904_uew7as3zz",
+              "title": "FOREVER LOVE",
+              "href": "https://foreverloves.eu.org/",
+              "description": "FOREVER LOVE",
+              "icon": "/assets/favicon_1754288412297.ico",
+              "enabled": true
+            },
+            {
+              "id": "site_1754288452961_vole8nsr4",
+              "title": "云记事本",
+              "href": "https://notes.ingin.pp.ua/",
+              "description": "",
+              "icon": "/assets/favicon_1754288446034.ico",
+              "enabled": true
+            },
+            {
+              "id": "site_1754288488286_szexdquy4",
+              "title": "short link",
+              "href": "https://short.ingin.pp.ua/",
+              "description": "短链接",
+              "icon": "/assets/favicon_1754288471101.png",
+              "enabled": true
+            },
+            {
+              "id": "site_1754288515618_5tm4050hy",
+              "title": "QD ",
+              "href": "https://qd.ingtool.eu.org/",
+              "description": "一个HTTP请求定时任务自动执行框架 base on HAR Editor and Tornado Server",
+              "icon": "/assets/favicon_1754288505384.png",
+              "enabled": true
+            },
+            {
+              "id": "site_1754288663760_2tv4ogqak",
+              "title": "shs库上传工具",
+              "href": "https://oss.bash.pp.ua/",
+              "description": "",
+              "icon": "/assets/favicon_1754288627953.ico",
+              "enabled": true
+            },
+            {
+              "id": "site_1754288560757_urobywhl9",
+              "title": "青龙",
+              "href": "https://ql.ingtool.eu.org/crontab",
+              "description": "",
+              "icon": "https://qn.whyour.cn/favicon.svg",
+              "enabled": true
+            },
+            {
+              "id": "1754289342512",
+              "title": "订阅管理系统",
+              "href": "https://sub.ingin.pp.ua/",
+              "description": "",
+              "icon": "/assets/favicon_1754289345443.ico",
+              "enabled": true
+            },
+            {
+              "id": "1754289180544",
+              "title": "人情往来账本",
+              "href": "https://wedding.ingin.pp.ua/",
+              "description": "人情往来账本",
+              "icon": "https://wedding.ingin.pp.ua/favicon.ico",
+              "enabled": true
+            },
+            {
+              "id": "1754289205229",
+              "title": "tg推送",
+              "href": "https://tg.ingin.pp.ua/",
+              "description": "tg推送",
+              "icon": "/assets/favicon_1754289209024.ico",
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "9124babb-180e-4c0a-bcce-cd73c0007112",
+          "title": "教程类",
+          "icon": "Book",
+          "description": "一些自建教程",
+          "enabled": true,
+          "items": [
+            {
+              "id": "1754289110576",
+              "title": "芋道源码",
+              "href": "https://yuanma.tech.pp.ua/",
+              "description": "芋道源码",
+              "icon": "/assets/favicon_1754289113457.ico",
+              "enabled": true
+            },
+            {
+              "id": "1754289161596",
+              "title": "技术教程导航中心",
+              "href": "https://tech.pp.ua/",
+              "description": "技术教程导航中心",
+              "icon": "/assets/favicon_1754289164742.ico",
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "9219fbfe-9be5-4567-94ca-45a041ff1daa",
+          "title": "娱乐类",
+          "icon": "Music",
+          "description": "娱乐网站",
+          "enabled": true,
+          "items": [
+            {
+              "id": "1754289234939",
+              "title": "FutureEcho",
+              "href": "https://music.mefun.org/app/#/song",
+              "description": "Navidrome Music",
+              "icon": "/assets/favicon_1754289239377.png",
+              "enabled": true
+            },
+            {
+              "id": "1754289292598",
+              "title": "Trueのikun",
+              "href": "https://diaojinping.de/app/#/song",
+              "description": "Navidrome Music Server",
+              "icon": "/assets/favicon_1754289316679.png",
+              "enabled": true
+            },
+            {
+              "id": "1754289045234",
+              "title": "Audiobookshelf",
+              "href": "https://audio.ingin.pp.ua/",
+              "description": "有声书",
+              "icon": "/assets/favicon_1754289081186.ico",
+              "enabled": true
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "9",
       "title": "AI工具包",
       "icon": "Brain",
@@ -820,179 +993,6 @@
               "href": "https://unsplash.com/",
               "description": "免费高清图片",
               "icon": "/assets/images/logos/unsplash.png",
-              "enabled": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "1754287656539",
-      "title": "自建工具",
-      "icon": "Folder",
-      "description": "一些自己创建的工具和教程",
-      "enabled": true,
-      "items": [],
-      "subCategories": [
-        {
-          "id": "abd56887-97f1-4a4a-86b5-d8415f22edf0",
-          "title": "工具类",
-          "icon": "Network",
-          "description": "一些自建工具",
-          "enabled": true,
-          "items": [
-            {
-              "id": "1754287668523",
-              "title": "二维码生成器",
-              "href": "https://qrcode.ingtool.eu.org/",
-              "description": "二维码生成器",
-              "icon": "/assets/img_1754287778213.png",
-              "enabled": true
-            },
-            {
-              "id": "site_1754288335391_ojomlb1u2",
-              "title": "tgState",
-              "href": "https://pic.ingtool.eu.org/",
-              "description": "telegram图床,tg图床,免费图床,永久图床,图片外链,免费图片外链,纸飞机图床,电报图床",
-              "icon": "/assets/favicon_1754288320000.ico",
-              "enabled": true
-            },
-            {
-              "id": "site_1754288392681_808u94me3",
-              "title": "探针",
-              "href": "https://tz.ingin.pp.ua/",
-              "description": "Komari Monitor, a simple server monitoring tool.",
-              "icon": "/assets/favicon_1754288371688.ico",
-              "enabled": true
-            },
-            {
-              "id": "site_1754288428904_uew7as3zz",
-              "title": "FOREVER LOVE",
-              "href": "https://foreverloves.eu.org/",
-              "description": "FOREVER LOVE",
-              "icon": "/assets/favicon_1754288412297.ico",
-              "enabled": true
-            },
-            {
-              "id": "site_1754288452961_vole8nsr4",
-              "title": "云记事本",
-              "href": "https://notes.ingin.pp.ua/",
-              "description": "",
-              "icon": "/assets/favicon_1754288446034.ico",
-              "enabled": true
-            },
-            {
-              "id": "site_1754288488286_szexdquy4",
-              "title": "short link",
-              "href": "https://short.ingin.pp.ua/",
-              "description": "短链接",
-              "icon": "/assets/favicon_1754288471101.png",
-              "enabled": true
-            },
-            {
-              "id": "site_1754288515618_5tm4050hy",
-              "title": "QD ",
-              "href": "https://qd.ingtool.eu.org/",
-              "description": "一个HTTP请求定时任务自动执行框架 base on HAR Editor and Tornado Server",
-              "icon": "/assets/favicon_1754288505384.png",
-              "enabled": true
-            },
-            {
-              "id": "site_1754288663760_2tv4ogqak",
-              "title": "shs库上传工具",
-              "href": "https://oss.bash.pp.ua/",
-              "description": "",
-              "icon": "/assets/favicon_1754288627953.ico",
-              "enabled": true
-            },
-            {
-              "id": "site_1754288560757_urobywhl9",
-              "title": "青龙",
-              "href": "https://ql.ingtool.eu.org/crontab",
-              "description": "",
-              "icon": "https://qn.whyour.cn/favicon.svg",
-              "enabled": true
-            },
-            {
-              "id": "1754289342512",
-              "title": "订阅管理系统",
-              "href": "https://sub.ingin.pp.ua/",
-              "description": "",
-              "icon": "/assets/favicon_1754289345443.ico",
-              "enabled": true
-            },
-            {
-              "id": "1754289180544",
-              "title": "人情往来账本",
-              "href": "https://wedding.ingin.pp.ua/",
-              "description": "人情往来账本",
-              "icon": "https://wedding.ingin.pp.ua/favicon.ico",
-              "enabled": true
-            },
-            {
-              "id": "1754289205229",
-              "title": "tg推送",
-              "href": "https://tg.ingin.pp.ua/",
-              "description": "tg推送",
-              "icon": "/assets/favicon_1754289209024.ico",
-              "enabled": true
-            }
-          ]
-        },
-        {
-          "id": "9124babb-180e-4c0a-bcce-cd73c0007112",
-          "title": "教程类",
-          "icon": "Book",
-          "description": "一些自建教程",
-          "enabled": true,
-          "items": [
-            {
-              "id": "1754289110576",
-              "title": "芋道源码",
-              "href": "https://yuanma.tech.pp.ua/",
-              "description": "芋道源码",
-              "icon": "/assets/favicon_1754289113457.ico",
-              "enabled": true
-            },
-            {
-              "id": "1754289161596",
-              "title": "技术教程导航中心",
-              "href": "https://tech.pp.ua/",
-              "description": "技术教程导航中心",
-              "icon": "/assets/favicon_1754289164742.ico",
-              "enabled": true
-            }
-          ]
-        },
-        {
-          "id": "9219fbfe-9be5-4567-94ca-45a041ff1daa",
-          "title": "娱乐类",
-          "icon": "Music",
-          "description": "娱乐网站",
-          "enabled": true,
-          "items": [
-            {
-              "id": "1754289234939",
-              "title": "FutureEcho",
-              "href": "https://music.mefun.org/app/#/song",
-              "description": "Navidrome Music",
-              "icon": "/assets/favicon_1754289239377.png",
-              "enabled": true
-            },
-            {
-              "id": "1754289292598",
-              "title": "Trueのikun",
-              "href": "https://diaojinping.de/app/#/song",
-              "description": "Navidrome Music Server",
-              "icon": "/assets/favicon_1754289316679.png",
-              "enabled": true
-            },
-            {
-              "id": "1754289045234",
-              "title": "Audiobookshelf",
-              "href": "https://audio.ingin.pp.ua/",
-              "description": "有声书",
-              "icon": "/assets/favicon_1754289081186.ico",
               "enabled": true
             }
           ]
