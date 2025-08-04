@@ -977,6 +977,14 @@
               "description": "Navidrome Music Server",
               "icon": "/assets/favicon_1754289316679.png",
               "enabled": true
+            },
+            {
+              "id": "1754289342512",
+              "title": "订阅管理系统",
+              "href": "https://sub.ingin.pp.ua/",
+              "description": "",
+              "icon": "/assets/favicon_1754289345443.ico",
+              "enabled": true
             }
           ]
         }
