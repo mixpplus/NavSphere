@@ -969,6 +969,14 @@
               "description": "Navidrome Music",
               "icon": "/assets/favicon_1754289239377.png",
               "enabled": true
+            },
+            {
+              "id": "1754289292598",
+              "title": "Trueのikun",
+              "href": "https://diaojinping.de/app/#/song",
+              "description": "Navidrome Music Server",
+              "icon": "/assets/favicon_1754289316679.png",
+              "enabled": true
             }
           ]
         }
