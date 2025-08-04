@@ -848,6 +848,14 @@
               "description": "二维码生成器",
               "icon": "/assets/img_1754287778213.png",
               "enabled": true
+            },
+            {
+              "id": "site_1754288335391_ojomlb1u2",
+              "title": "tgState",
+              "href": "https://pic.ingtool.eu.org/",
+              "description": "telegram图床,tg图床,免费图床,永久图床,图片外链,免费图片外链,纸飞机图床,电报图床",
+              "icon": "/assets/favicon_1754288320000.ico",
+              "enabled": true
             }
           ]
         },
