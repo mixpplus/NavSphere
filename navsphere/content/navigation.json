@@ -118,7 +118,7 @@
               "title": "二维码生成器",
               "href": "https://qrcode.ingtool.eu.org/",
               "description": "二维码生成器",
-              "icon": "/assets/img_1754287778213.png",
+              "icon": "https://r2love.ingtool.eu.org/static/image/favicon.ico",
               "enabled": true
             },
             {
