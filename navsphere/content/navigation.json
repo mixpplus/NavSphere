@@ -945,6 +945,14 @@
               "description": "技术教程导航中心",
               "icon": "/assets/favicon_1754289164742.ico",
               "enabled": true
+            },
+            {
+              "id": "1754289180544",
+              "title": "人情往来账本",
+              "href": "https://wedding.ingin.pp.ua/",
+              "description": "人情往来账本",
+              "icon": "https://wedding.ingin.pp.ua/favicon.ico",
+              "enabled": true
             }
           ]
         }
