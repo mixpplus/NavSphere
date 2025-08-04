@@ -905,7 +905,16 @@
           "icon": "Book",
           "description": "一些自建教程",
           "enabled": true,
-          "items": []
+          "items": [
+            {
+              "id": "site_1754288560757_urobywhl9",
+              "title": "青龙",
+              "href": "https://ql.ingtool.eu.org/crontab",
+              "description": "",
+              "icon": "https://qn.whyour.cn/favicon.svg",
+              "enabled": true
+            }
+          ]
         }
       ]
     }
