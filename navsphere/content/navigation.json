@@ -850,6 +850,14 @@
           "description": "一些自建工具",
           "enabled": true,
           "items": []
+        },
+        {
+          "id": "9124babb-180e-4c0a-bcce-cd73c0007112",
+          "title": "教程类",
+          "icon": "Book",
+          "description": "一些自建教程",
+          "enabled": true,
+          "items": []
         }
       ]
     }
