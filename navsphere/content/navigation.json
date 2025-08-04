@@ -961,6 +961,14 @@
               "description": "tg推送",
               "icon": "/assets/favicon_1754289209024.ico",
               "enabled": true
+            },
+            {
+              "id": "1754289234939",
+              "title": "FutureEcho",
+              "href": "https://music.mefun.org/app/#/song",
+              "description": "Navidrome Music",
+              "icon": "/assets/favicon_1754289239377.png",
+              "enabled": true
             }
           ]
         }
