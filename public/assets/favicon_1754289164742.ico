@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术教程导航中心</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #f72585;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --text-color: #495057;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition-speed: 0.3s;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 800px;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        
+        .header p {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: all var(--transition-speed) ease;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .nav-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-gradient {
+            height: 6px;
+            width: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+        
+        .card-content {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-title {
+            font-size: 1.6rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .card-desc {
+            color: var(--text-color);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            flex: 1;
+        }
+        
+        .nav-link {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: auto;
+        }
+        
+        .nav-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+        }
+        
+        .footer {
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .nav-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .nav-card {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        .nav-card:nth-child(1) { animation-delay: 0.1s; }
+        .nav-card:nth-child(2) { animation-delay: 0.2s; }
+        .nav-card:nth-child(3) { animation-delay: 0.3s; }
+        .nav-card:nth-child(4) { animation-delay: 0.4s; }
+        .nav-card:nth-child(5) { animation-delay: 0.5s; }
+        .nav-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <h1>技术教程导航中心</h1>
+        <p>精选优质技术教程，助您提升开发技能</p>
+    </div>
+    
+    <div class="nav-container" id="navContainer">
+        <!-- 卡片将通过JavaScript动态生成 -->
+    </div>
+    
+    <div class="footer">
+        <p>© 2023 技术教程导航中心 | 持续更新优质资源</p>
+    </div>
+
+    <script>
+        // 教程数据 - 易于扩展
+        const tutorials = [
+            {
+                title: "数据结构教程",
+                description: "深入学习数据结构与算法，提升编程基本功",
+                url: "https://ds.tech.pp.ua",
+                icon: "fas fa-project-diagram"
+            },
+            {
+                title: "Shell教程",
+                description: "掌握Shell脚本编程，提高工作效率",
+                url: "https://shell.tech.pp.ua",
+                icon: "fas fa-terminal"
+            },
+            {
+                title: "Git教程",
+                description: "精通版本控制工具Git，团队协作更高效",
+                url: "https://git.tech.pp.ua",
+                icon: "fas fa-code-branch"
+            },
+            {
+                title: "源码分析教程",
+                description: "深入分析优秀开源项目源码，学习设计思想",
+                url: "https://yuanma.tech.pp.ua",
+                icon: "fas fa-code"
+            },
+			{
+                title: "nginx教程",
+                description: "nginx入门学习，快速掌握",
+                url: "https://nginx.tech.pp.ua",
+                icon: "fas fa-code"
+            },
+			{
+                title: "openresty最佳实践",
+                description: "openresty入门学习，快速掌握",
+                url: "https://moonbingbing.gitbooks.io/openresty-best-practices/content/",
+                icon: "fas fa-code"
+            },
+			{
+                title: "加解密教程",
+                description: "常见的加密与解密方式",
+                url: "https://jiami.tech.pp.ua",
+                icon: "fas fa-code"
+            },
+            {
+                title: "python教程",
+                description: "python学习教程",
+                url: "https://github.com/jackfrued/Python-100-Days/blob/master/Day01-20/01.%E5%88%9D%E8%AF%86Python.md",
+                icon: "fas fa-code"
+            }
+            // 未来可以在这里添加更多教程
+        ];
+
+        // 动态生成导航卡片
+        const navContainer = document.getElementById('navContainer');
+        
+        tutorials.forEach((tutorial, index) => {
+            const card = document.createElement('div');
+            card.className = 'nav-card';
+            card.style.animationDelay = `${0.1 * index}s`;
+            
+            card.innerHTML = `
+                <div class="card-gradient"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <i class="${tutorial.icon}"></i>
+                    </div>
+                    <h2 class="card-title">${tutorial.title}</h2>
+                    <p class="card-desc">${tutorial.description}</p>
+                    <a href="${tutorial.url}" target="_blank" class="nav-link">开始学习</a>
+                </div>
+            `;
+            
+            navContainer.appendChild(card);
+        });
+    </script>
+</body>
+</html>
