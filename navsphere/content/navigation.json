@@ -832,7 +832,16 @@
       "icon": "Folder",
       "description": "一些自己创建的工具和教程",
       "enabled": true,
-      "items": [],
+      "items": [
+        {
+          "id": "1754287668523",
+          "title": "二维码生成器",
+          "href": "https://qrcode.ingtool.eu.org/",
+          "description": "二维码生成器",
+          "icon": "/assets/favicon_1754287706313.ico",
+          "enabled": true
+        }
+      ],
       "subCategories": []
     }
   ]
