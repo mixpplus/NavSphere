@@ -842,7 +842,16 @@
           "enabled": true
         }
       ],
-      "subCategories": []
+      "subCategories": [
+        {
+          "id": "abd56887-97f1-4a4a-86b5-d8415f22edf0",
+          "title": "工具类",
+          "icon": "Network",
+          "description": "一些自建工具",
+          "enabled": true,
+          "items": []
+        }
+      ]
     }
   ]
 }
