@@ -912,6 +912,14 @@
               "description": "",
               "icon": "https://qn.whyour.cn/favicon.svg",
               "enabled": true
+            },
+            {
+              "id": "1754289045234",
+              "title": "Audiobookshelf",
+              "href": "https://audio.ingin.pp.ua/",
+              "description": "有声书",
+              "icon": "/assets/favicon_1754289081186.ico",
+              "enabled": true
             }
           ]
         },
