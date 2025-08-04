@@ -929,7 +929,16 @@
           "icon": "Book",
           "description": "一些自建教程",
           "enabled": true,
-          "items": []
+          "items": [
+            {
+              "id": "1754289110576",
+              "title": "芋道源码",
+              "href": "https://yuanma.tech.pp.ua/",
+              "description": "芋道源码",
+              "icon": "/assets/favicon_1754289113457.ico",
+              "enabled": true
+            }
+          ]
         }
       ]
     }
