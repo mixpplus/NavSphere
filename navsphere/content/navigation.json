@@ -904,16 +904,7 @@
               "description": "",
               "icon": "/assets/favicon_1754288627953.ico",
               "enabled": true
-            }
-          ]
-        },
-        {
-          "id": "9124babb-180e-4c0a-bcce-cd73c0007112",
-          "title": "教程类",
-          "icon": "Book",
-          "description": "一些自建教程",
-          "enabled": true,
-          "items": [
+            },
             {
               "id": "site_1754288560757_urobywhl9",
               "title": "青龙",
@@ -923,6 +914,14 @@
               "enabled": true
             }
           ]
+        },
+        {
+          "id": "9124babb-180e-4c0a-bcce-cd73c0007112",
+          "title": "教程类",
+          "icon": "Book",
+          "description": "一些自建教程",
+          "enabled": true,
+          "items": []
         }
       ]
     }
