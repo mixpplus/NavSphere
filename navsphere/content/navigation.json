@@ -888,6 +888,14 @@
               "description": "短链接",
               "icon": "/assets/favicon_1754288471101.png",
               "enabled": true
+            },
+            {
+              "id": "site_1754288515618_5tm4050hy",
+              "title": "QD ",
+              "href": "https://qd.ingtool.eu.org/",
+              "description": "一个HTTP请求定时任务自动执行框架 base on HAR Editor and Tornado Server",
+              "icon": "/assets/favicon_1754288505384.png",
+              "enabled": true
             }
           ]
         },
