@@ -936,6 +936,14 @@
               "description": "人情往来账本",
               "icon": "https://wedding.ingin.pp.ua/favicon.ico",
               "enabled": true
+            },
+            {
+              "id": "1754289205229",
+              "title": "tg推送",
+              "href": "https://tg.ingin.pp.ua/",
+              "description": "tg推送",
+              "icon": "/assets/favicon_1754289209024.ico",
+              "enabled": true
             }
           ]
         },
@@ -960,14 +968,6 @@
               "href": "https://tech.pp.ua/",
               "description": "技术教程导航中心",
               "icon": "/assets/favicon_1754289164742.ico",
-              "enabled": true
-            },
-            {
-              "id": "1754289205229",
-              "title": "tg推送",
-              "href": "https://tg.ingin.pp.ua/",
-              "description": "tg推送",
-              "icon": "/assets/favicon_1754289209024.ico",
               "enabled": true
             }
           ]
