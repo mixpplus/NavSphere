@@ -92,6 +92,14 @@
           "description": "Beautiful & consistent icon toolkit made by the community.",
           "icon": "/assets/favicon_1754229702059.ico",
           "enabled": true
+        },
+        {
+          "id": "site_1754891664310_zmkpjp8v1",
+          "title": "飞搜侠-飞书文档搜索工具_一键搜飞书链接_搜干货_搜资源",
+          "href": "https://www.feisoo.com/",
+          "description": "飞搜侠是一款在线飞书文档搜索工具,提供飞书文档搜索服务,帮助用户快速找到公开飞书文档,便捷获取飞书干货资料、课程、文档数据",
+          "icon": "/assets/favicon_1754891626412.ico",
+          "enabled": true
         }
       ],
       "subCategories": [],
